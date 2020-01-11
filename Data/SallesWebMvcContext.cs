@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.EntityFrameworkCore;
-using SallesWebMvc.Models;
+
 
 namespace SallesWebMvc.Data
 {
@@ -14,6 +11,11 @@ namespace SallesWebMvc.Data
         {
         }
 
-        public DbSet<SallesWebMvc.Models.Department> Department { get; set; }
+        public DbSet<Models.Department> Department { get; set; }
+        public DbSet<Models.Seller> Seller { get; set; }
+        public DbSet<Models.SalesRecord> SalesRecord { get; set; }
+      
+
+
     }
 }

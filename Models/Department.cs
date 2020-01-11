@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace SallesWebMvc.Models
 {
@@ -11,26 +9,29 @@ namespace SallesWebMvc.Models
 
         public string Name { get; set; }
 
-        public List<Seller> Sellers;
+        public List<Seller> Sellers { get; set; } = new List<Seller>();
 
         public Department()
         {
 
         }
+
         public Department(int id, string name)
         {
             this.Id = id;
             this.Name = name;
         }
 
-        public void addSeller(Seller seller)
+        public void AddSeller(Seller seller)
         {
             this.Sellers.Add(seller);
         }
 
-        public void removeSeller(Seller seller)
+        public void RemoveSeller(Seller seller)
         {
             this.Sellers.Remove(seller);
         }
+        
+        
     }
 }

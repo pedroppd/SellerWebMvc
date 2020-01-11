@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SallesWebMvc.Models
 {
@@ -19,11 +18,10 @@ namespace SallesWebMvc.Models
 
         public Department Department { get; set; }
 
-        public List<SalesRecord> SalesRecords { get; set; }
+        public ICollection<SalesRecord> SalesRecords { get; set; } = new List<SalesRecord>();
 
         public Seller()
         {
-
         }
 
         public Seller(int id, string name, string email, DateTime bithDate, double baseSalary, Department department)
@@ -36,26 +34,24 @@ namespace SallesWebMvc.Models
             Department = department;
         }
 
-        public void addSales(SalesRecord sales)
+        public void AddSales(SalesRecord sales)
         {
             this.SalesRecords.Add(sales);
         }
 
-        public void removeSales(SalesRecord sales)
+        public void RemoveSales(SalesRecord sales)
         {
             this.SalesRecords.Remove(sales);
         }
-
-        public void totalSales(DateTime init, DateTime end)
+        public double TotalSales(DateTime init, DateTime end)
         {
-           this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Sum(x => x.Amount);
+          return this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Sum(x => x.Amount);
         }
 
-        public void countSales(DateTime init, DateTime end)
+        public int CountSales(DateTime init, DateTime end)
         {
-            this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Count();
+           return this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Count();
         }
 
-       
     }
 }
