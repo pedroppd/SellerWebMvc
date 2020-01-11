@@ -145,4 +145,12 @@ C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\runtimes
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Create.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Delete.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Details.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Edit.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Departments\Index.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.MvcApplicationPartsAssemblyInfo.cache
