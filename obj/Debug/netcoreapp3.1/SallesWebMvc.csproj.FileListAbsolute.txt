@@ -154,3 +154,4 @@ C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\MySqlCon
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Index.cshtml.g.cs
