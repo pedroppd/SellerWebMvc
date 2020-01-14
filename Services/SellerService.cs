@@ -28,7 +28,12 @@ namespace SallesWebMvc.Services
 
         public void Add(Seller seller)
         {
-            throw new NotImplementedException();
+            if (seller == null)
+            {
+                throw new Exception("Seller was null");
+            }
+            _context.Seller.Add(seller);
+            _context.SaveChanges();
         }
 
         public Seller FindById(int? id)

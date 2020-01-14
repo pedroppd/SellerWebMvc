@@ -36,10 +36,9 @@ namespace SallesWebMvc.Controllers
         }
 
         [HttpPost]
-        [IgnoreAntiforgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Seller seller)
         {
-           
             service.Add(seller);
             return RedirectToAction(nameof(Index));
         }
