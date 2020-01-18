@@ -20,6 +20,7 @@ namespace SallesWebMvc.Models
 
         public ICollection<SalesRecord> SalesRecords { get; set; } = new List<SalesRecord>();
 
+        public int DepartmentId { get; set; }
         public Seller()
         {
         }
@@ -38,20 +39,17 @@ namespace SallesWebMvc.Models
         {
             this.SalesRecords.Add(sales);
         }
-
         public void RemoveSales(SalesRecord sales)
         {
             this.SalesRecords.Remove(sales);
         }
         public double TotalSales(DateTime init, DateTime end)
         {
-          return this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Sum(x => x.Amount);
+            return this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Sum(x => x.Amount);
         }
-
         public int CountSales(DateTime init, DateTime end)
         {
            return this.SalesRecords.Where(x => x.Date >= init && x.Date <= end).Count();
         }
-
     }
 }
