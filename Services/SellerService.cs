@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using SallesWebMvc.Services.Exception;
 
 namespace SallesWebMvc.Services
 {
@@ -21,13 +22,25 @@ namespace SallesWebMvc.Services
         }
         public void Update(Seller seller)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!_context.Seller.Any(x => x.Id == seller.Id))
+                {
+                    throw new NotFoundException("Id not found");
+                }
+                _context.Update(seller);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new DbConcurrencyException(ex.Message);
+            }
         }
         public void Add(Seller seller)
         {
             if (seller == null)
             {
-                throw new Exception("Seller was null");
+                throw new NullReferenceException("Seller was null");
             }
             _context.Seller.Add(seller);
             _context.SaveChanges();
@@ -36,7 +49,7 @@ namespace SallesWebMvc.Services
         {
             if (id == null)
             {
-                throw new Exception("Id cannot be null");
+                throw new NullReferenceException("Id cannot be null");
             }
             return _context.Seller.Include(Seller => Seller.Department).Where(seller => seller.Id == id).FirstOrDefault();
         }
@@ -46,15 +59,15 @@ namespace SallesWebMvc.Services
             {
                 if (id == null)
                 {
-                    throw new Exception("Id cannot be null");
+                    throw new NullReferenceException("Id cannot be null");
                 }
                 Seller sellerToRemove = FindById(id);
                 _context.Seller.Remove(sellerToRemove);
                 _context.SaveChanges();
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
-                throw new Exception(ex.Message);
+                throw new NullReferenceException(ex.Message);
             }
         }
     }

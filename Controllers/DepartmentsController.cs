@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -30,18 +31,25 @@ namespace SallesWebMvc.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "id was null" });
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "department was null" });
             }
 
             return View(department);
         }
+
+        public IActionResult Error(string message)
+        {
+            var ViewModel = new ErrorViewModel { message = message, RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
+            return View(ViewModel);
+        }
+
 
         // GET: Departments/Create
         public IActionResult Create()
@@ -67,13 +75,13 @@ namespace SallesWebMvc.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "id was null" });
             }
 
             var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "department was null" });
             }
             return View(department);
         }
@@ -85,7 +93,7 @@ namespace SallesWebMvc.Controllers
         {
             if (id != department.Id)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "diferent objects, cannot make update" });
             }
 
             if (ModelState.IsValid)
@@ -99,7 +107,7 @@ namespace SallesWebMvc.Controllers
                 {
                     if (!DepartmentExists(department.Id))
                     {
-                        return NotFound();
+                        return RedirectToAction(nameof(Error), new { message = "object is diferent, cannot be update" });
                     }
                     else
                     {
@@ -116,14 +124,14 @@ namespace SallesWebMvc.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "id was null" });
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "id was null" });
             }
 
             return View(department);

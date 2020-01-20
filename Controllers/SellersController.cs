@@ -4,7 +4,9 @@ using SallesWebMvc.Data;
 using SallesWebMvc.Models;
 using SallesWebMvc.Models.ViewModels;
 using SallesWebMvc.Services;
+using SallesWebMvc.Services.Exception;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SallesWebMvc.Controllers
@@ -41,14 +43,36 @@ namespace SallesWebMvc.Controllers
             service.Add(seller);
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            return View();
+            Seller seller = service.FindById(id);
+
+            List<Department> departments = DepartmentService.FindAll();
+            SellerFormViewModel ViewModel = new SellerFormViewModel { Departments = departments, Seller = seller };
+            return View(ViewModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? id, Seller seller)
         {
-            service.Update(seller);
-            return View(seller);
+            if (id != seller.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                service.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException ex)
+            {
+                return RedirectToAction(nameof(Error), new { message = "id was null"});
+            }
+            catch (DbConcurrencyException ex)
+            {
+                return RedirectToAction(nameof(Error), new { message = "id not found" });
+            }
         }
         public IActionResult Delete(int? id)
         {
@@ -69,7 +93,15 @@ namespace SallesWebMvc.Controllers
             Seller seller = service.FindById(id);
             return View(seller);
         }
+
+        public IActionResult Error(string message)
+        {
+            var ViewModel = new ErrorViewModel { message = message, RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
+            return View(ViewModel);
+        }
+
     }
-
-
 }
+
+
+

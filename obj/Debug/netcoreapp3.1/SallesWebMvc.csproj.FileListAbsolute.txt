@@ -9,7 +9,6 @@ C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\SallesWe
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\SallesWebMvc.pdb
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\SallesWebMvc.Views.dll
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\bin\Debug\netcoreapp3.1\SallesWebMvc.Views.pdb
-C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.csprojAssemblyReference.cache
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\staticwebassets\SallesWebMvc.StaticWebAssets.Manifest.cache
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\staticwebassets\SallesWebMvc.StaticWebAssets.xml
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.RazorAssemblyInfo.cache
@@ -158,3 +157,5 @@ C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Create.cshtml.g.cs
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Delete.cshtml.g.cs
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Details.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Edit.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.csprojAssemblyReference.cache
