@@ -159,3 +159,9 @@ C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Details.cshtml.g.cs
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sellers\Edit.cshtml.g.cs
 C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\SallesWebMvc.csprojAssemblyReference.cache
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\Create.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\Delete.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\Details.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\Edit.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\Index.cshtml.g.cs
+C:\Users\Pedro Dantas\source\repos\SallesWebMvc\obj\Debug\netcoreapp3.1\Razor\Views\SalesRecords\SimpleSearch.cshtml.g.cs

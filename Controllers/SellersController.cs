@@ -20,19 +20,19 @@ namespace SallesWebMvc.Controllers
             service = SellerService;
             DepartmentService = departmentService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Seller> sellers = service.FindAll();
+            var sellers = await service.FindAllAsync();
             return View(sellers);
         }
         public async Task<IActionResult> FindSellerById(int? id)
         {
-            Seller seller = service.FindById(id);
+            var seller = await service.FindByIdAsync(id);
             return View(seller);
         }
         public async Task<IActionResult> Create()
         {
-            List<Department> departments = DepartmentService.FindAll();
+            var departments = await DepartmentService.FindAllAsync();
             SellerFormViewModel ViewModel = new SellerFormViewModel { Departments = departments };
             return View(ViewModel);
         }
@@ -40,21 +40,27 @@ namespace SallesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Seller seller)
         {
-            service.Add(seller);
+            if (!ModelState.IsValid)
+            {
+                var Department = await DepartmentService.FindAllAsync();
+                var ViewModel = new SellerFormViewModel { Seller = seller, Departments = Department };
+                return View(ViewModel);
+            }
+            await service.Add(seller);
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            Seller seller = service.FindById(id);
+            var seller = await service.FindByIdAsync(id.Value);
 
-            List<Department> departments = DepartmentService.FindAll();
+            List<Department> departments = await DepartmentService.FindAllAsync();
             SellerFormViewModel ViewModel = new SellerFormViewModel { Departments = departments, Seller = seller };
             return View(ViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int? id, Seller seller)
+        public async Task<IActionResult> Edit(int? id, Seller seller)
         {
             if (id != seller.Id)
             {
@@ -62,7 +68,7 @@ namespace SallesWebMvc.Controllers
             }
             try
             {
-                service.Update(seller);
+                await service.UpdateAsync(seller);
                 return RedirectToAction(nameof(Index));
             }
             catch (NotFoundException ex)
@@ -74,23 +80,29 @@ namespace SallesWebMvc.Controllers
                 return RedirectToAction(nameof(Error), new { message = "id not found" });
             }
         }
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            Seller seller = service.FindById(id.Value);
+            Seller seller = await service.FindByIdAsync(id.Value);
             return View(seller);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            service.RemoveSeller(id);
-            return RedirectToAction(nameof(Index));
+            try { 
+                await service.RemoveSellerAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
 
         [HttpGet]
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
-            Seller seller = service.FindById(id);
+            Seller seller = await service.FindByIdAsync(id);
             return View(seller);
         }
 
@@ -99,7 +111,7 @@ namespace SallesWebMvc.Controllers
             var ViewModel = new ErrorViewModel { message = message, RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
             return View(ViewModel);
         }
-
+       
     }
 }
 

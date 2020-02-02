@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SallesWebMvc.Models.SalesRecord>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+<form class="form-horizontal" asp-action="SimpleSearch">
+    <fieldset>
+        <legend>Simple Search</legend>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+                <input type="text" name="name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-dark">Search</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<hr />
+
+<form class="form-horizontal" asp-action="GroupingSearch">
+    <fieldset>
+        <legend>Grouping Search</legend>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+                <input type="text" name="name" placeholder="Exemplo, Exemplo2, Exemplo3..." class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-dark">Search</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<hr />
+
+

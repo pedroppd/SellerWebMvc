@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SallesWebMvc.Services.Exception;
+using System.Threading.Tasks;
 
 namespace SallesWebMvc.Services
 {
@@ -16,11 +17,11 @@ namespace SallesWebMvc.Services
         {
             _context = context;
         }
-        public List<Seller> FindAll()
+        public async Task<List<Seller>> FindAllAsync()
         {
-            return _context.Seller.ToList();
+            return await _context.Seller.ToListAsync();
         }
-        public void Update(Seller seller)
+        public async Task UpdateAsync(Seller seller)
         {
             try
             {
@@ -36,24 +37,24 @@ namespace SallesWebMvc.Services
                 throw new DbConcurrencyException(ex.Message);
             }
         }
-        public void Add(Seller seller)
+        public async Task Add(Seller seller)
         {
             if (seller == null)
             {
                 throw new NullReferenceException("Seller was null");
             }
             _context.Seller.Add(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-        public Seller FindById(int? id)
+        public async Task<Seller> FindByIdAsync(int? id)
         {
             if (id == null)
             {
                 throw new NullReferenceException("Id cannot be null");
             }
-            return _context.Seller.Include(Seller => Seller.Department).Where(seller => seller.Id == id).FirstOrDefault();
+            return await _context.Seller.Include(Seller => Seller.Department).Where(seller => seller.Id == id).FirstOrDefaultAsync();
         }
-        public void RemoveSeller(int? id)
+        public async Task RemoveSellerAsync(int? id)
         {
             try
             {
@@ -61,13 +62,17 @@ namespace SallesWebMvc.Services
                 {
                     throw new NullReferenceException("Id cannot be null");
                 }
-                Seller sellerToRemove = FindById(id);
-                _context.Seller.Remove(sellerToRemove);
-                _context.SaveChanges();
+                Task<Seller> sellerToRemove = FindByIdAsync(id);
+                _context.Seller.Remove(sellerToRemove.Result);
+                await _context.SaveChangesAsync();
             }
             catch (NullReferenceException ex)
             {
                 throw new NullReferenceException(ex.Message);
+            }
+            catch (DbUpdateException e)
+            {
+                throw new IntegrityException(e.Message);
             }
         }
     }

@@ -9,19 +9,24 @@ namespace SallesWebMvc.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "O campo nome é obrigatório !")]
+        [StringLength(55, MinimumLength = 4, ErrorMessage = "The size of field name should be between 55 and 4 !")]
         public string Name { get; set; }
 
         [Display(Name = "E-mail")]
         [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "O e-mail é obrigatório !")]
         public string Email { get; set; }
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Required(ErrorMessage = "O campo Birth date é obrigatório !")]
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
+        [Required(ErrorMessage = "O campo base salary é obrigatório !")]
         public double BaseSalary { get; set; }
 
         public Department Department { get; set; }

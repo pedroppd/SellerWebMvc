@@ -37,6 +37,7 @@ namespace SallesWebMvc.Data
             Seller s3 = new Seller(3, "Hamilton júnior", "hamilton@hotmail.com", new DateTime(1995, 7, 15), 1500.00, d5);
             Seller s4 = new Seller(4, "Frederico da silta", "fred@hotmail.com", new DateTime(1998, 3, 11), 5000.00, d3);
             Seller s5 = new Seller(5, "Edmundo oliveira", "edmundo@hotmail.com", new DateTime(1994, 6, 12), 2500.00, d4);
+            Seller s6 = new Seller(6, "Gabriel", "gabriel@hotmail.com", new DateTime(1994, 6, 12), 2500.00, d4);
 
             //Salles Record
             SalesRecord sr1 = new SalesRecord(1, new DateTime(2019, 12, 12),5000.00,  Models.Enums.SalesStatus.PEDING, s1);
@@ -44,10 +45,11 @@ namespace SallesWebMvc.Data
             SalesRecord sr3 = new SalesRecord(3, new DateTime(2017, 06, 3), 8.000, Models.Enums.SalesStatus.BILLED, s3);
             SalesRecord sr4 = new SalesRecord(4, new DateTime(2015, 05, 3), 200.000, Models.Enums.SalesStatus.PEDING, s4);
             SalesRecord sr5 = new SalesRecord(5, new DateTime(2016, 01, 20), 75.000, Models.Enums.SalesStatus.BILLED, s5);
+            SalesRecord sr6 = new SalesRecord(6, new DateTime(2013, 02, 14), 55.000, Models.Enums.SalesStatus.PEDING, s6);
 
             _context.Department.AddRange(d1, d2, d3, d4, d5); //Saving departments
-            _context.Seller.AddRange(s1, s2, s3, s4, s5); //Saving sellers
-            _context.SalesRecord.AddRange(sr1, sr2, sr3, sr4, sr5); //Saving Sales Record
+            _context.Seller.AddRange(s1, s2, s3, s4, s5, s6); //Saving sellers
+            _context.SalesRecord.AddRange(sr1, sr2, sr3, sr4, sr5, sr6); //Saving Sales Record
 
             _context.SaveChanges();
 
